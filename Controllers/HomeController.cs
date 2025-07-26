@@ -18,6 +18,26 @@ public class HomeController : Controller
         return View();
     }
 
+    public IActionResult Calculadora()
+    {
+        return View();
+    }
+
+    public IActionResult Graficador()
+    {
+        return View();
+    }
+
+    public IActionResult Derivadas()
+    {
+        return View();
+    }
+
+    public IActionResult Integrales()
+    {
+        return View();
+    }
+
     public IActionResult Privacy()
     {
         return View();

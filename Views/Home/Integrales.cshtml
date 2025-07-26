@@ -1,0 +1,292 @@
+@{
+    ViewData["Title"] = "Cálculo de Integrales";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h2 class="text-center">Cálculo de Integrales</h2>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="mb-3">
+                            <label for="function" class="form-label">Función f(x):</label>
+                            <input type="text" class="form-control" id="function" placeholder="Ejemplo: x^2, sin(x), etc.">
+                        </div>
+                        <div class="mb-3">
+                            <label for="variable" class="form-label">Variable:</label>
+                            <input type="text" class="form-control" id="variable" value="x">
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="integralType" id="indefiniteIntegral" value="indefinite" checked>
+                                <label class="form-check-label" for="indefiniteIntegral">
+                                    Integral Indefinida
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="integralType" id="definiteIntegral" value="definite">
+                                <label class="form-check-label" for="definiteIntegral">
+                                    Integral Definida
+                                </label>
+                            </div>
+                        </div>
+                        <div id="limitsContainer" class="mb-3" style="display: none;">
+                            <div class="row">
+                                <div class="col-6">
+                                    <label for="lowerLimit" class="form-label">Límite Inferior:</label>
+                                    <input type="number" class="form-control" id="lowerLimit" value="0">
+                                </div>
+                                <div class="col-6">
+                                    <label for="upperLimit" class="form-label">Límite Superior:</label>
+                                    <input type="number" class="form-control" id="upperLimit" value="1">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <button class="btn btn-primary w-100" onclick="calculateIntegral()">Calcular Integral</button>
+                        </div>
+                        <div class="mb-3">
+                            <button class="btn btn-success w-100" onclick="plotFunction()">Graficar Función</button>
+                        </div>
+                        <div class="mb-3">
+                            <button class="btn btn-secondary w-100" onclick="clearAll()">Limpiar</button>
+                        </div>
+                        <div class="card mt-3">
+                            <div class="card-header">Resultado</div>
+                            <div class="card-body">
+                                <div class="mb-3">
+                                    <label class="form-label">Función Original:</label>
+                                    <div id="originalFunction" class="p-2 border rounded"></div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Integral:</label>
+                                    <div id="integralResult" class="p-2 border rounded"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div id="graph" style="width: 100%; height: 500px;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Inicializar el gráfico
+        let graphDiv = document.getElementById('graph');
+        Plotly.newPlot(graphDiv, [], {
+            title: 'Gráfico de Función',
+            xaxis: { title: 'x' },
+            yaxis: { title: 'y' }
+        });
+
+        let originalExpr = '';
+        let integralExpr = '';
+
+        // Mostrar/ocultar límites de integración
+        document.querySelectorAll('input[name="integralType"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                document.getElementById('limitsContainer').style.display = 
+                    this.value === 'definite' ? 'block' : 'none';
+            });
+        });
+
+        function calculateIntegral() {
+            const functionStr = document.getElementById('function').value;
+            const variable = document.getElementById('variable').value || 'x';
+            const integralType = document.querySelector('input[name="integralType"]:checked').value;
+            
+            if (!functionStr) {
+                alert('Por favor, ingresa una función.');
+                return;
+            }
+
+            try {
+                originalExpr = functionStr;
+                document.getElementById('originalFunction').textContent = 'f(' + variable + ') = ' + originalExpr;
+                
+                if (integralType === 'indefinite') {
+                    // Para integrales indefinidas, usamos una aproximación simbólica simple
+                    // Nota: Esto es una simplificación y no funciona para todos los casos
+                    // En una aplicación real, se necesitaría una biblioteca de cálculo simbólico más potente
+                    
+                    // Algunos casos básicos
+                    if (functionStr === 'x') {
+                        integralExpr = 'x^2/2 + C';
+                    } else if (functionStr === 'x^2') {
+                        integralExpr = 'x^3/3 + C';
+                    } else if (functionStr === '1/x') {
+                        integralExpr = 'ln|x| + C';
+                    } else if (functionStr === 'sin(x)') {
+                        integralExpr = '-cos(x) + C';
+                    } else if (functionStr === 'cos(x)') {
+                        integralExpr = 'sin(x) + C';
+                    } else if (functionStr === 'e^x') {
+                        integralExpr = 'e^x + C';
+                    } else {
+                        integralExpr = '∫' + functionStr + ' d' + variable + ' (Cálculo simbólico limitado)';
+                    }
+                    
+                    document.getElementById('integralResult').textContent = '∫' + functionStr + ' d' + variable + ' = ' + integralExpr;
+                } else {
+                    // Para integrales definidas, usamos integración numérica
+                    const lowerLimit = parseFloat(document.getElementById('lowerLimit').value);
+                    const upperLimit = parseFloat(document.getElementById('upperLimit').value);
+                    
+                    // Compilar la expresión
+                    const expr = math.compile(functionStr);
+                    
+                    // Integración numérica usando la regla del trapecio
+                    const numPoints = 1000;
+                    const step = (upperLimit - lowerLimit) / numPoints;
+                    let sum = 0;
+                    
+                    for (let i = 0; i < numPoints; i++) {
+                        const x1 = lowerLimit + i * step;
+                        const x2 = x1 + step;
+                        const y1 = expr.evaluate({ x: x1 });
+                        const y2 = expr.evaluate({ x: x2 });
+                        sum += (y1 + y2) * step / 2;
+                    }
+                    
+                    document.getElementById('integralResult').textContent = 
+                        '∫(' + lowerLimit + ',' + upperLimit + ') ' + functionStr + ' d' + variable + ' ≈ ' + sum.toFixed(6);
+                    
+                    // Graficar el área bajo la curva si es una integral definida
+                    plotAreaUnderCurve(expr, lowerLimit, upperLimit);
+                }
+                
+            } catch (error) {
+                alert('Error al calcular la integral: ' + error.message);
+            }
+        }
+
+        function plotFunction() {
+            const functionStr = document.getElementById('function').value;
+            
+            if (!functionStr) {
+                alert('Por favor, ingresa una función.');
+                return;
+            }
+
+            try {
+                // Compilar la expresión
+                const expr = math.compile(functionStr);
+                
+                // Generar puntos para la gráfica
+                const points = 1000;
+                const xMin = -10;
+                const xMax = 10;
+                const step = (xMax - xMin) / points;
+                
+                const xValues = [];
+                const yValues = [];
+                
+                for (let i = 0; i <= points; i++) {
+                    const x = xMin + step * i;
+                    xValues.push(x);
+                    
+                    try {
+                        const y = expr.evaluate({ x: x });
+                        yValues.push(y);
+                    } catch (e) {
+                        yValues.push(null);
+                    }
+                }
+                
+                const trace = {
+                    x: xValues,
+                    y: yValues,
+                    mode: 'lines',
+                    name: 'f(x) = ' + functionStr,
+                    line: { color: 'blue' }
+                };
+                
+                Plotly.newPlot(graphDiv, [trace], {
+                    title: 'Gráfico de f(x) = ' + functionStr,
+                    xaxis: { title: 'x' },
+                    yaxis: { title: 'y' }
+                });
+                
+            } catch (error) {
+                alert('Error al graficar: ' + error.message);
+            }
+        }
+
+        function plotAreaUnderCurve(expr, lowerLimit, upperLimit) {
+            try {
+                // Generar puntos para la gráfica
+                const points = 1000;
+                const step = (upperLimit - lowerLimit) / points;
+                
+                const xValues = [];
+                const yValues = [];
+                
+                for (let i = 0; i <= points; i++) {
+                    const x = lowerLimit + step * i;
+                    xValues.push(x);
+                    
+                    try {
+                        const y = expr.evaluate({ x: x });
+                        yValues.push(y);
+                    } catch (e) {
+                        yValues.push(0);
+                    }
+                }
+                
+                const trace = {
+                    x: xValues,
+                    y: yValues,
+                    mode: 'lines',
+                    name: 'f(x)',
+                    line: { color: 'blue' }
+                };
+                
+                const fillTrace = {
+                    x: xValues,
+                    y: yValues,
+                    fill: 'tozeroy',
+                    type: 'scatter',
+                    mode: 'none',
+                    name: 'Área',
+                    fillcolor: 'rgba(0, 0, 255, 0.2)'
+                };
+                
+                Plotly.newPlot(graphDiv, [trace, fillTrace], {
+                    title: 'Integral Definida: ∫(' + lowerLimit + ',' + upperLimit + ') f(x) dx',
+                    xaxis: { 
+                        title: 'x',
+                        range: [lowerLimit - 1, upperLimit + 1]
+                    },
+                    yaxis: { title: 'y' }
+                });
+                
+            } catch (error) {
+                console.error('Error al graficar área: ' + error.message);
+            }
+        }
+
+        function clearAll() {
+            document.getElementById('function').value = '';
+            document.getElementById('originalFunction').textContent = '';
+            document.getElementById('integralResult').textContent = '';
+            document.getElementById('lowerLimit').value = '0';
+            document.getElementById('upperLimit').value = '1';
+            originalExpr = '';
+            integralExpr = '';
+            
+            Plotly.newPlot(graphDiv, [], {
+                title: 'Gráfico de Función',
+                xaxis: { title: 'x' },
+                yaxis: { title: 'y' }
+            });
+        }
+    </script>
+}

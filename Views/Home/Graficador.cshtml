@@ -1,0 +1,113 @@
+@{
+    ViewData["Title"] = "Graficador de Funciones";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h2 class="text-center">Graficador de Funciones</h2>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="mb-3">
+                            <label for="function" class="form-label">Función f(x):</label>
+                            <input type="text" class="form-control" id="function" placeholder="Ejemplo: x^2, sin(x), etc.">
+                        </div>
+                        <div class="mb-3">
+                            <label for="xMin" class="form-label">Valor mínimo de x:</label>
+                            <input type="number" class="form-control" id="xMin" value="-10">
+                        </div>
+                        <div class="mb-3">
+                            <label for="xMax" class="form-label">Valor máximo de x:</label>
+                            <input type="number" class="form-control" id="xMax" value="10">
+                        </div>
+                        <div class="mb-3">
+                            <button class="btn btn-primary w-100" onclick="plotFunction()">Graficar</button>
+                        </div>
+                        <div class="mb-3">
+                            <button class="btn btn-secondary w-100" onclick="clearGraph()">Limpiar</button>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div id="graph" style="width: 100%; height: 500px;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Inicializar el gráfico
+        let graphDiv = document.getElementById('graph');
+        Plotly.newPlot(graphDiv, [], {
+            title: 'Gráfico de Función',
+            xaxis: { title: 'x' },
+            yaxis: { title: 'y' }
+        });
+
+        function plotFunction() {
+            const functionStr = document.getElementById('function').value;
+            const xMin = parseFloat(document.getElementById('xMin').value);
+            const xMax = parseFloat(document.getElementById('xMax').value);
+            
+            if (!functionStr) {
+                alert('Por favor, ingresa una función.');
+                return;
+            }
+
+            try {
+                // Compilar la expresión con mathjs
+                const expression = math.compile(functionStr);
+                
+                // Generar puntos para la gráfica
+                const points = 1000;
+                const xValues = [];
+                const yValues = [];
+                
+                const step = (xMax - xMin) / points;
+                
+                for (let i = 0; i <= points; i++) {
+                    const x = xMin + step * i;
+                    xValues.push(x);
+                    
+                    try {
+                        const y = expression.evaluate({ x: x });
+                        yValues.push(y);
+                    } catch (e) {
+                        yValues.push(null); // Punto no definido
+                    }
+                }
+                
+                const trace = {
+                    x: xValues,
+                    y: yValues,
+                    mode: 'lines',
+                    name: functionStr,
+                    line: { color: 'blue' }
+                };
+                
+                Plotly.newPlot(graphDiv, [trace], {
+                    title: 'Gráfico de f(x) = ' + functionStr,
+                    xaxis: { title: 'x' },
+                    yaxis: { title: 'y' }
+                });
+                
+            } catch (error) {
+                alert('Error al evaluar la función: ' + error.message);
+            }
+        }
+
+        function clearGraph() {
+            document.getElementById('function').value = '';
+            Plotly.newPlot(graphDiv, [], {
+                title: 'Gráfico de Función',
+                xaxis: { title: 'x' },
+                yaxis: { title: 'y' }
+            });
+        }
+    </script>
+}

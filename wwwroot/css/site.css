@@ -20,3 +20,47 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+/* Estilos adicionales para la aplicación */
+.card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.card-header {
+  font-weight: bold;
+}
+
+#display {
+  font-size: 1.5rem;
+  font-weight: bold;
+  height: 50px;
+}
+
+.btn-light {
+  background-color: #f8f9fa;
+  border-color: #ddd;
+}
+
+.btn-light:hover {
+  background-color: #e9ecef;
+}
+
+.btn-warning {
+  font-weight: bold;
+}
+
+.btn-success {
+  font-weight: bold;
+}
+
+.btn-danger {
+  font-weight: bold;
+}
+
+/* Estilos para las expresiones matemáticas */
+#originalFunction, #derivativeResult, #integralResult {
+  min-height: 40px;
+  background-color: #f8f9fa;
+  font-family: 'Courier New', monospace;
+}

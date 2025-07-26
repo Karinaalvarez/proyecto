@@ -1,0 +1,72 @@
+@{
+    ViewData["Title"] = "Calculadora";
+}
+
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h2 class="text-center">Calculadora</h2>
+            </div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <input type="text" id="display" class="form-control form-control-lg text-end" readonly>
+                </div>
+                <div class="row g-2">
+                    <div class="col-3"><button class="btn btn-light w-100 py-3" onclick="appendToDisplay('7')">7</button></div>
+                    <div class="col-3"><button class="btn btn-light w-100 py-3" onclick="appendToDisplay('8')">8</button></div>
+                    <div class="col-3"><button class="btn btn-light w-100 py-3" onclick="appendToDisplay('9')">9</button></div>
+                    <div class="col-3"><button class="btn btn-warning w-100 py-3" onclick="appendToDisplay('/')">÷</button></div>
+                </div>
+                <div class="row g-2 mt-2">
+                    <div class="col-3"><button class="btn btn-light w-100 py-3" onclick="appendToDisplay('4')">4</button></div>
+                    <div class="col-3"><button class="btn btn-light w-100 py-3" onclick="appendToDisplay('5')">5</button></div>
+                    <div class="col-3"><button class="btn btn-light w-100 py-3" onclick="appendToDisplay('6')">6</button></div>
+                    <div class="col-3"><button class="btn btn-warning w-100 py-3" onclick="appendToDisplay('*')">×</button></div>
+                </div>
+                <div class="row g-2 mt-2">
+                    <div class="col-3"><button class="btn btn-light w-100 py-3" onclick="appendToDisplay('1')">1</button></div>
+                    <div class="col-3"><button class="btn btn-light w-100 py-3" onclick="appendToDisplay('2')">2</button></div>
+                    <div class="col-3"><button class="btn btn-light w-100 py-3" onclick="appendToDisplay('3')">3</button></div>
+                    <div class="col-3"><button class="btn btn-warning w-100 py-3" onclick="appendToDisplay('-')">-</button></div>
+                </div>
+                <div class="row g-2 mt-2">
+                    <div class="col-3"><button class="btn btn-light w-100 py-3" onclick="appendToDisplay('0')">0</button></div>
+                    <div class="col-3"><button class="btn btn-light w-100 py-3" onclick="appendToDisplay('.')">.</button></div>
+                    <div class="col-3"><button class="btn btn-success w-100 py-3" onclick="calculate()">=</button></div>
+                    <div class="col-3"><button class="btn btn-warning w-100 py-3" onclick="appendToDisplay('+')">+</button></div>
+                </div>
+                <div class="row g-2 mt-2">
+                    <div class="col-6"><button class="btn btn-danger w-100 py-3" onclick="clearDisplay()">C</button></div>
+                    <div class="col-6"><button class="btn btn-secondary w-100 py-3" onclick="backspace()">⌫</button></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function appendToDisplay(value) {
+            document.getElementById('display').value += value;
+        }
+
+        function clearDisplay() {
+            document.getElementById('display').value = '';
+        }
+
+        function backspace() {
+            let display = document.getElementById('display');
+            display.value = display.value.slice(0, -1);
+        }
+
+        function calculate() {
+            let display = document.getElementById('display');
+            try {
+                display.value = math.evaluate(display.value);
+            } catch (error) {
+                display.value = 'Error';
+            }
+        }
+    </script>
+}

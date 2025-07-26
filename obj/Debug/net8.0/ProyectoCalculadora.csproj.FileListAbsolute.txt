@@ -26,9 +26,10 @@ C:\Users\Karina\Downloads\ProyectoCalculadora\obj\Debug\net8.0\staticwebassets\m
 C:\Users\Karina\Downloads\ProyectoCalculadora\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.ProyectoCalculadora.props
 C:\Users\Karina\Downloads\ProyectoCalculadora\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.ProyectoCalculadora.props
 C:\Users\Karina\Downloads\ProyectoCalculadora\obj\Debug\net8.0\staticwebassets.pack.json
-C:\Users\Karina\Downloads\ProyectoCalculadora\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\Karina\Downloads\ProyectoCalculadora\obj\Debug\net8.0\ProyectoCalculadora.dll
 C:\Users\Karina\Downloads\ProyectoCalculadora\obj\Debug\net8.0\refint\ProyectoCalculadora.dll
 C:\Users\Karina\Downloads\ProyectoCalculadora\obj\Debug\net8.0\ProyectoCalculadora.pdb
 C:\Users\Karina\Downloads\ProyectoCalculadora\obj\Debug\net8.0\ProyectoCalculadora.genruntimeconfig.cache
 C:\Users\Karina\Downloads\ProyectoCalculadora\obj\Debug\net8.0\ref\ProyectoCalculadora.dll
+C:\Users\Karina\Downloads\ProyectoCalculadora\obj\Debug\net8.0\ProyectoCalculadora.sourcelink.json
+C:\Users\Karina\Downloads\ProyectoCalculadora\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
