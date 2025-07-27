@@ -64,3 +64,22 @@ body {
   background-color: #f8f9fa;
   font-family: 'Courier New', monospace;
 }
+
+/* Estilos para el teclado simbólico */
+.symbolic-keyboard .btn {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+}
+
+.symbolic-keyboard .btn-info {
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+    color: white;
+}
+
+.symbolic-keyboard .btn-info:hover {
+    background-color: #138496;
+    border-color: #117a8b;
+}
+
+/* Añadir estos estilos al final del archivo site.css */

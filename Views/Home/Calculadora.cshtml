@@ -12,7 +12,6 @@
             <div class="card-body">
                 <div class="mb-3">
                     <input type="text" id="display" class="form-control form-control-lg text-end" readonly>
-                
                 </div>
                 <div class="row g-2">
                     <div class="col-3"><button class="btn btn-light w-100 py-3" onclick="appendToDisplay('7')">7</button></div>
@@ -42,12 +41,27 @@
                     <div class="col-6"><button class="btn btn-danger w-100 py-3" onclick="clearDisplay()">C</button></div>
                     <div class="col-6"><button class="btn btn-secondary w-100 py-3" onclick="backspace()">⌫</button></div>
                 </div>
+                
+                <!-- Botón para mostrar/ocultar el teclado simbólico -->
+                <div class="row mt-3">
+                    <div class="col-12">
+                        <button class="btn btn-outline-primary w-100" type="button" data-bs-toggle="collapse" data-bs-target="#symbolicKeyboard" aria-expanded="false">
+                            Mostrar/Ocultar Teclado Simbólico
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Contenedor para el teclado simbólico -->
+                <div class="collapse mt-3" id="symbolicKeyboard">
+                    <!-- El teclado simbólico se insertará aquí mediante JavaScript -->
+                </div>
             </div>
         </div>
     </div>
 </div>
 
 @section Scripts {
+    <script src="~/js/symbolic-keyboard.js"></script>
     <script>
         function appendToDisplay(value) {
             document.getElementById('display').value += value;
@@ -70,5 +84,10 @@
                 display.value = 'Error';
             }
         }
+        
+        // Inicializar el teclado simbólico cuando el DOM esté listo
+        document.addEventListener('DOMContentLoaded', function() {
+            SymbolicKeyboard.init('symbolicKeyboard', 'display');
+        });
     </script>
 }

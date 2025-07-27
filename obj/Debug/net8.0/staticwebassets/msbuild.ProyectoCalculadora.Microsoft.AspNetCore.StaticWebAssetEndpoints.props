@@ -1,16 +1,16 @@
 ﻿<Project>
   <ItemGroup>
+    <StaticWebAssetEndpoint Include="_content/ProyectoCalculadora/css/site.95ihv1t5pl.css">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\site.css'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"95ihv1t5pl"},{"Name":"integrity","Value":"sha256-41aVwig0lKDE8sxUZz77TtfmxvXIAXbcAaoP/ZCHVdw="},{"Name":"label","Value":"_content/ProyectoCalculadora/css/site.css"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"1475"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u002241aVwig0lKDE8sxUZz77TtfmxvXIAXbcAaoP/ZCHVdw=\u0022"},{"Name":"Last-Modified","Value":"Sun, 27 Jul 2025 19:10:38 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/ProyectoCalculadora/css/site.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\site.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-z8L8qoFP1uJxpIV6YekoUHZBn9y2d1Sw1M421ROAzAA="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"1072"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022z8L8qoFP1uJxpIV6YekoUHZBn9y2d1Sw1M421ROAzAA=\u0022"},{"Name":"Last-Modified","Value":"Sat, 26 Jul 2025 05:22:46 GMT"}]]]></ResponseHeaders>
-    </StaticWebAssetEndpoint>
-    <StaticWebAssetEndpoint Include="_content/ProyectoCalculadora/css/site.rlkq4tgjzn.css">
-      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\site.css'))</AssetFile>
-      <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"rlkq4tgjzn"},{"Name":"integrity","Value":"sha256-z8L8qoFP1uJxpIV6YekoUHZBn9y2d1Sw1M421ROAzAA="},{"Name":"label","Value":"_content/ProyectoCalculadora/css/site.css"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"1072"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022z8L8qoFP1uJxpIV6YekoUHZBn9y2d1Sw1M421ROAzAA=\u0022"},{"Name":"Last-Modified","Value":"Sat, 26 Jul 2025 05:22:46 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-41aVwig0lKDE8sxUZz77TtfmxvXIAXbcAaoP/ZCHVdw="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"1475"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u002241aVwig0lKDE8sxUZz77TtfmxvXIAXbcAaoP/ZCHVdw=\u0022"},{"Name":"Last-Modified","Value":"Sun, 27 Jul 2025 19:10:38 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/ProyectoCalculadora/favicon.61n19gt1b8.ico">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\favicon.ico'))</AssetFile>
@@ -35,6 +35,18 @@
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"xtxxf3hu2r"},{"Name":"integrity","Value":"sha256-hRQyftXiu1lLX2P9Ly9xa4gHJgLeR1uGN5qegUobtGo="},{"Name":"label","Value":"_content/ProyectoCalculadora/js/site.js"}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"231"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u0022hRQyftXiu1lLX2P9Ly9xa4gHJgLeR1uGN5qegUobtGo=\u0022"},{"Name":"Last-Modified","Value":"Sat, 26 Jul 2025 03:54:59 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/ProyectoCalculadora/js/symbolic-keyboard.g8ee7fu97s.js">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\symbolic-keyboard.js'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"g8ee7fu97s"},{"Name":"integrity","Value":"sha256-kGJo4vnzybRrwjV1QJnI5shw4/8xCptn5IEH1aqLVPo="},{"Name":"label","Value":"_content/ProyectoCalculadora/js/symbolic-keyboard.js"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"4781"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u0022kGJo4vnzybRrwjV1QJnI5shw4/8xCptn5IEH1aqLVPo=\u0022"},{"Name":"Last-Modified","Value":"Sun, 27 Jul 2025 19:09:15 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/ProyectoCalculadora/js/symbolic-keyboard.js">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\symbolic-keyboard.js'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-kGJo4vnzybRrwjV1QJnI5shw4/8xCptn5IEH1aqLVPo="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"4781"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u0022kGJo4vnzybRrwjV1QJnI5shw4/8xCptn5IEH1aqLVPo=\u0022"},{"Name":"Last-Modified","Value":"Sun, 27 Jul 2025 19:09:15 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/ProyectoCalculadora/lib/bootstrap/dist/css/bootstrap-grid.agp80tu62r.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\lib\bootstrap\dist\css\bootstrap-grid.css'))</AssetFile>

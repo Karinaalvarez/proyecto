@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "uUgIxeLW/0yERHWnAxQsJivPTKDdLBMC6BkXG4H0MMM=",
+  "Hash": "oJEzbFenHF1XhMPK1qYZmAJo75eV1iV3R+eLiTnUKAE=",
   "Source": "ProyectoCalculadora",
   "BasePath": "_content/ProyectoCalculadora",
   "Mode": "Default",
@@ -73,8 +73,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "rlkq4tgjzn",
-      "Integrity": "z8L8qoFP1uJxpIV6YekoUHZBn9y2d1Sw1M421ROAzAA=",
+      "Fingerprint": "95ihv1t5pl",
+      "Integrity": "41aVwig0lKDE8sxUZz77TtfmxvXIAXbcAaoP/ZCHVdw=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
@@ -120,6 +120,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\site.js"
+    },
+    {
+      "Identity": "C:\\Users\\Karina\\Downloads\\ProyectoCalculadora\\wwwroot\\js\\symbolic-keyboard.js",
+      "SourceId": "ProyectoCalculadora",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Karina\\Downloads\\ProyectoCalculadora\\wwwroot\\",
+      "BasePath": "_content/ProyectoCalculadora",
+      "RelativePath": "js/symbolic-keyboard#[.{fingerprint}]?.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "g8ee7fu97s",
+      "Integrity": "kGJo4vnzybRrwjV1QJnI5shw4/8xCptn5IEH1aqLVPo=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\symbolic-keyboard.js"
     },
     {
       "Identity": "C:\\Users\\Karina\\Downloads\\ProyectoCalculadora\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
@@ -1321,6 +1342,51 @@
   ],
   "Endpoints": [
     {
+      "Route": "css/site.95ihv1t5pl.css",
+      "AssetFile": "C:\\Users\\Karina\\Downloads\\ProyectoCalculadora\\wwwroot\\css\\site.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1475"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"41aVwig0lKDE8sxUZz77TtfmxvXIAXbcAaoP/ZCHVdw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 27 Jul 2025 19:10:38 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "95ihv1t5pl"
+        },
+        {
+          "Name": "label",
+          "Value": "css/site.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-41aVwig0lKDE8sxUZz77TtfmxvXIAXbcAaoP/ZCHVdw="
+        }
+      ]
+    },
+    {
       "Route": "css/site.css",
       "AssetFile": "C:\\Users\\Karina\\Downloads\\ProyectoCalculadora\\wwwroot\\css\\site.css",
       "Selectors": [],
@@ -1331,7 +1397,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1072"
+          "Value": "1475"
         },
         {
           "Name": "Content-Type",
@@ -1339,11 +1405,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"z8L8qoFP1uJxpIV6YekoUHZBn9y2d1Sw1M421ROAzAA=\""
+          "Value": "\"41aVwig0lKDE8sxUZz77TtfmxvXIAXbcAaoP/ZCHVdw=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 26 Jul 2025 05:22:46 GMT"
+          "Value": "Sun, 27 Jul 2025 19:10:38 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1353,52 +1419,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-z8L8qoFP1uJxpIV6YekoUHZBn9y2d1Sw1M421ROAzAA="
-        }
-      ]
-    },
-    {
-      "Route": "css/site.rlkq4tgjzn.css",
-      "AssetFile": "C:\\Users\\Karina\\Downloads\\ProyectoCalculadora\\wwwroot\\css\\site.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1072"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"z8L8qoFP1uJxpIV6YekoUHZBn9y2d1Sw1M421ROAzAA=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 26 Jul 2025 05:22:46 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "rlkq4tgjzn"
-        },
-        {
-          "Name": "label",
-          "Value": "css/site.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-z8L8qoFP1uJxpIV6YekoUHZBn9y2d1Sw1M421ROAzAA="
+          "Value": "sha256-41aVwig0lKDE8sxUZz77TtfmxvXIAXbcAaoP/ZCHVdw="
         }
       ]
     },
@@ -1563,6 +1584,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-hRQyftXiu1lLX2P9Ly9xa4gHJgLeR1uGN5qegUobtGo="
+        }
+      ]
+    },
+    {
+      "Route": "js/symbolic-keyboard.g8ee7fu97s.js",
+      "AssetFile": "C:\\Users\\Karina\\Downloads\\ProyectoCalculadora\\wwwroot\\js\\symbolic-keyboard.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "4781"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"kGJo4vnzybRrwjV1QJnI5shw4/8xCptn5IEH1aqLVPo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 27 Jul 2025 19:09:15 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "g8ee7fu97s"
+        },
+        {
+          "Name": "label",
+          "Value": "js/symbolic-keyboard.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-kGJo4vnzybRrwjV1QJnI5shw4/8xCptn5IEH1aqLVPo="
+        }
+      ]
+    },
+    {
+      "Route": "js/symbolic-keyboard.js",
+      "AssetFile": "C:\\Users\\Karina\\Downloads\\ProyectoCalculadora\\wwwroot\\js\\symbolic-keyboard.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "4781"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"kGJo4vnzybRrwjV1QJnI5shw4/8xCptn5IEH1aqLVPo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 27 Jul 2025 19:09:15 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-kGJo4vnzybRrwjV1QJnI5shw4/8xCptn5IEH1aqLVPo="
         }
       ]
     },

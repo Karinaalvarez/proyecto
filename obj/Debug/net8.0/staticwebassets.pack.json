@@ -17,6 +17,10 @@
       "PackagePath": "staticwebassets\\js\\site.js"
     },
     {
+      "Id": "C:\\Users\\Karina\\Downloads\\ProyectoCalculadora\\wwwroot\\js\\symbolic-keyboard.js",
+      "PackagePath": "staticwebassets\\js\\symbolic-keyboard.js"
+    },
+    {
       "Id": "C:\\Users\\Karina\\Downloads\\ProyectoCalculadora\\wwwroot\\lib\\bootstrap\\LICENSE",
       "PackagePath": "staticwebassets\\lib\\bootstrap"
     },

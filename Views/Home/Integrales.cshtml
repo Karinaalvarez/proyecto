@@ -15,10 +15,25 @@
                             <label for="function" class="form-label">Función f(x):</label>
                             <input type="text" class="form-control" id="function" placeholder="Ejemplo: x^2, sin(x), etc.">
                         </div>
+                        
+                        <!-- Botón para mostrar/ocultar el teclado simbólico -->
+                        <div class="mb-3">
+                            <button class="btn btn-outline-primary w-100" type="button" data-bs-toggle="collapse" data-bs-target="#symbolicKeyboard" aria-expanded="false">
+                                Mostrar/Ocultar Teclado Simbólico
+                            </button>
+                        </div>
+                        
+                        <!-- Contenedor para el teclado simbólico -->
+                        <div class="collapse mb-3" id="symbolicKeyboard">
+                            <!-- El teclado simbólico se insertará aquí mediante JavaScript -->
+                        </div>
+                        
                         <div class="mb-3">
                             <label for="variable" class="form-label">Variable:</label>
                             <input type="text" class="form-control" id="variable" value="x">
                         </div>
+                        
+                        <!-- El resto del código HTML se mantiene igual -->
                         <div class="mb-3">
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="integralType" id="indefiniteIntegral" value="indefinite" checked>
@@ -78,7 +93,13 @@
 </div>
 
 @section Scripts {
+    <script src="~/js/symbolic-keyboard.js"></script>
     <script>
+        // Inicializar el teclado simbólico cuando el DOM esté listo
+        document.addEventListener('DOMContentLoaded', function() {
+            SymbolicKeyboard.init('symbolicKeyboard', 'function');
+        });
+        
         // Inicializar el gráfico
         let graphDiv = document.getElementById('graph');
         Plotly.newPlot(graphDiv, [], {
