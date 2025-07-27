@@ -2,14 +2,15 @@
     ViewData["Title"] = "Inicio";
 }
 
-<div class="text-center">
-    <h1 class="display-4">CalcuMath</h1>
+<div class="text-center my-5">
+    <h1 class="display-4 fw-bold">CalcuMath</h1>
     <p class="lead">Aplicación web educativa para el aprendizaje de cálculo diferencial</p>
 </div>
 
-<div class="row mt-5">
-    <div class="col-md-3">
-        <div class="card">
+<!-- Tarjetas -->
+<div class="row justify-content-center mb-5">
+    <div class="col-md-3 mb-3">
+        <div class="card h-100 shadow border-0">
             <div class="card-body text-center">
                 <h5 class="card-title">Calculadora</h5>
                 <p class="card-text">Realiza operaciones matemáticas básicas</p>
@@ -17,8 +18,8 @@
             </div>
         </div>
     </div>
-    <div class="col-md-3">
-        <div class="card">
+    <div class="col-md-3 mb-3">
+        <div class="card h-100 shadow border-0">
             <div class="card-body text-center">
                 <h5 class="card-title">Graficador</h5>
                 <p class="card-text">Visualiza funciones matemáticas</p>
@@ -26,8 +27,8 @@
             </div>
         </div>
     </div>
-    <div class="col-md-3">
-        <div class="card">
+    <div class="col-md-3 mb-3">
+        <div class="card h-100 shadow border-0">
             <div class="card-body text-center">
                 <h5 class="card-title">Derivadas</h5>
                 <p class="card-text">Calcula derivadas de funciones</p>
@@ -35,12 +36,48 @@
             </div>
         </div>
     </div>
-    <div class="col-md-3">
-        <div class="card">
+    <div class="col-md-3 mb-3">
+        <div class="card h-100 shadow border-0">
             <div class="card-body text-center">
                 <h5 class="card-title">Integrales</h5>
                 <p class="card-text">Calcula integrales básicas</p>
                 <a asp-controller="Home" asp-action="Integrales" class="btn btn-primary">Ir a Integrales</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Sección de conceptos -->
+<div class="container my-5">
+    <h2 class="text-center mb-4">Conceptos de Cálculo Diferencial</h2>
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="p-4 bg-light rounded shadow-sm h-100">
+                <h5 class="fw-bold text-primary">Límites</h5>
+                <p>
+                    Los límites son fundamentales para entender el comportamiento de una función cuando su variable independiente se aproxima a un valor específico.
+                    Nos permiten analizar el comportamiento de las funciones en puntos donde pueden no estar definidas y son esenciales para la definición del concepto de derivada.
+                </p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="p-4 bg-light rounded shadow-sm h-100">
+                <h5 class="fw-bold text-success">Derivadas</h5>
+                <p>
+                    La derivada representa la tasa de cambio instantánea de una función con respecto a su variable independiente.
+                    Es una herramienta esencial para analizar el comportamiento de las funciones, determinar máximos y mínimos,
+                    y resolver problemas de optimización en diversas disciplinas.
+                </p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="p-4 bg-light rounded shadow-sm h-100">
+                <h5 class="fw-bold text-danger">Integrales</h5>
+                <p>
+                    La integral permite calcular el área bajo una curva, representar acumulaciones y resolver problemas relacionados
+                    con el total acumulado de una cantidad variable. Es la operación inversa de la derivación y tiene aplicaciones
+                    en física, economía, estadística, entre otros campos.
+                </p>
             </div>
         </div>
     </div>
