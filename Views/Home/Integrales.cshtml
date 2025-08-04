@@ -93,6 +93,9 @@
 </div>
 
 @section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/nerdamer@latest/nerdamer.core.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/nerdamer@latest/Algebra.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/nerdamer@latest/Calculus.min.js"></script>
     <script src="~/js/symbolic-keyboard.js"></script>
     <script>
         // Inicializar el teclado simbólico cuando el DOM esté listo
@@ -119,6 +122,12 @@
             });
         });
 
+        // Función para formatear expresiones de Nerdamer
+        function formatExpression(expr) {
+            // Reemplazar potencias con notación más legible
+            return expr.replace(/\^\(([^)]+)\)/g, '^$1');
+        }
+
         function calculateIntegral() {
             const functionStr = document.getElementById('function').value;
             const variable = document.getElementById('variable').value || 'x';
@@ -134,58 +143,22 @@
                 document.getElementById('originalFunction').textContent = 'f(' + variable + ') = ' + originalExpr;
                 
                 if (integralType === 'indefinite') {
-                    // Para integrales indefinidas, usamos una aproximación simbólica simple
-                    // Nota: Esto es una simplificación y no funciona para todos los casos
-                    // En una aplicación real, se necesitaría una biblioteca de cálculo simbólico más potente
-                    
-                    // Casos básicos ampliados
-                    if (functionStr === 'x') {
-                        integralExpr = 'x^2/2 + C';
-                    } else if (functionStr === 'x^2') {
-                        integralExpr = 'x^3/3 + C';
-                    } else if (functionStr === 'x^3') {
-                        integralExpr = 'x^4/4 + C';
-                    } else if (functionStr === 'x^4') {
-                        integralExpr = 'x^5/5 + C';
-                    } else if (functionStr === 'x^5') {
-                        integralExpr = 'x^6/6 + C';
-                    } else if (functionStr === '1/x') {
-                        integralExpr = 'ln|x| + C';
-                    } else if (functionStr === '1/x^2') {
-                        integralExpr = '-1/x + C';
-                    } else if (functionStr === 'sin(x)') {
-                        integralExpr = '-cos(x) + C';
-                    } else if (functionStr === 'cos(x)') {
-                        integralExpr = 'sin(x) + C';
-                    } else if (functionStr === 'tan(x)') {
-                        integralExpr = '-ln|cos(x)| + C';
-                    } else if (functionStr === 'sec(x)') {
-                        integralExpr = 'ln|sec(x) + tan(x)| + C';
-                    } else if (functionStr === 'csc(x)') {
-                        integralExpr = 'ln|csc(x) - cot(x)| + C';
-                    } else if (functionStr === 'cot(x)') {
-                        integralExpr = 'ln|sin(x)| + C';
-                    } else if (functionStr === 'e^x') {
-                        integralExpr = 'e^x + C';
-                    } else if (functionStr === 'ln(x)') {
-                        integralExpr = 'x·ln(x) - x + C';
-                    } else if (functionStr === '1/(1+x^2)') {
-                        integralExpr = 'arctan(x) + C';
-                    } else if (functionStr === '1/sqrt(1-x^2)') {
-                        integralExpr = 'arcsin(x) + C';
-                    } else if (functionStr === 'sqrt(x)' || functionStr === 'x^(1/2)') {
-                        integralExpr = '(2/3)·x^(3/2) + C';
-                    } else if (functionStr === '1') {
-                        integralExpr = 'x + C';
-                    } else {
-                        // Intentar detectar potencias de x en formato x^n
-                        const powerMatch = functionStr.match(/^x\^(\d+)$/);
-                        if (powerMatch) {
-                            const power = parseInt(powerMatch[1]);
-                            integralExpr = `x^${power+1}/${power+1} + C`;
+                    try {
+                        // Usar nerdamer para calcular la integral indefinida simbólicamente
+                        const result = nerdamer.integrate(functionStr, variable);
+                        
+                        // Verificar si la integración fue completa o parcial
+                        if (result.hasIntegral && result.hasIntegral()) {
+                            // La integración no fue completa
+                            integralExpr = result.toString() + ' + C (Integración parcial)';
                         } else {
-                            integralExpr = '∫' + functionStr + ' d' + variable + ' (Cálculo simbólico limitado)';
+                            // La integración fue completa
+                            integralExpr = result.toString() + ' + C';
                         }
+                    } catch (error) {
+                        // Si hay un error con nerdamer, mostrar mensaje
+                        console.error('Error en la integración simbólica:', error);
+                        integralExpr = '∫' + functionStr + ' d' + variable + ' (Cálculo simbólico limitado)';
                     }
                     
                     document.getElementById('integralResult').textContent = '∫' + functionStr + ' d' + variable + ' = ' + integralExpr;
