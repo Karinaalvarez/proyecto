@@ -3,72 +3,93 @@
 }
 
 <div class="row">
-    <div class="col-md-6 offset-md-3">
-        <a asp-controller="Home" asp-action="Index" class="btn btn-primary">Ir a INICIO</a>
+    <div class="col-md-8 offset-md-2">
         <div class="card">
             <div class="card-header bg-primary text-white">
                 <h2 class="text-center">Calculadora</h2>
             </div>
             <div class="card-body">
                 <div class="mb-3">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                        <small id="operation-history" class="text-muted"></small>
+                    </div>
                     <input type="text" id="display" class="form-control form-control-lg text-end" readonly>
                 </div>
+                
+                <!-- Funciones especiales -->
                 <div class="row g-2">
-                    <div class="col-3"><button class="btn btn-light w-100 py-3" onclick="appendToDisplay('7')">7</button></div>
-                    <div class="col-3"><button class="btn btn-light w-100 py-3" onclick="appendToDisplay('8')">8</button></div>
-                    <div class="col-3"><button class="btn btn-light w-100 py-3" onclick="appendToDisplay('9')">9</button></div>
-                    <div class="col-3"><button class="btn btn-warning w-100 py-3" onclick="appendToDisplay('/')">÷</button></div>
-                </div>
-                <div class="row g-2 mt-2">
-                    <div class="col-3"><button class="btn btn-light w-100 py-3" onclick="appendToDisplay('4')">4</button></div>
-                    <div class="col-3"><button class="btn btn-light w-100 py-3" onclick="appendToDisplay('5')">5</button></div>
-                    <div class="col-3"><button class="btn btn-light w-100 py-3" onclick="appendToDisplay('6')">6</button></div>
-                    <div class="col-3"><button class="btn btn-warning w-100 py-3" onclick="appendToDisplay('*')">×</button></div>
-                </div>
-                <div class="row g-2 mt-2">
-                    <div class="col-3"><button class="btn btn-light w-100 py-3" onclick="appendToDisplay('1')">1</button></div>
-                    <div class="col-3"><button class="btn btn-light w-100 py-3" onclick="appendToDisplay('2')">2</button></div>
-                    <div class="col-3"><button class="btn btn-light w-100 py-3" onclick="appendToDisplay('3')">3</button></div>
-                    <div class="col-3"><button class="btn btn-warning w-100 py-3" onclick="appendToDisplay('-')">-</button></div>
-                </div>
-                <div class="row g-2 mt-2">
-                    <div class="col-3"><button class="btn btn-light w-100 py-3" onclick="appendToDisplay('0')">0</button></div>
-                    <div class="col-3"><button class="btn btn-light w-100 py-3" onclick="appendToDisplay('.')">.</button></div>
-                    <div class="col-3"><button class="btn btn-success w-100 py-3" onclick="calculate()">=</button></div>
-                    <div class="col-3"><button class="btn btn-warning w-100 py-3" onclick="appendToDisplay('+')">+</button></div>
-                </div>
-                <div class="row g-2 mt-2">
-                    <div class="col-6"><button class="btn btn-danger w-100 py-3" onclick="clearDisplay()">C</button></div>
-                    <div class="col-6"><button class="btn btn-secondary w-100 py-3" onclick="backspace()">⌫</button></div>
+                    <div class="col-6"><button class="btn btn-danger w-100 py-2" onclick="clearDisplay()">C</button></div>
+                    <div class="col-6"><button class="btn btn-secondary w-100 py-2" onclick="backspace()">⌫</button></div>
                 </div>
                 
-                <!-- Botón para mostrar/ocultar el teclado simbólico -->
-                <div class="row mt-3">
-                    <div class="col-12">
-                        <button class="btn btn-outline-primary w-100" type="button" data-bs-toggle="collapse" data-bs-target="#symbolicKeyboard" aria-expanded="false">
-                            Mostrar/Ocultar Teclado Simbólico
-                        </button>
-                    </div>
+                <!-- Funciones científicas -->
+                <div class="row g-2 mt-2">
+                    <div class="col-2"><button class="btn btn-info w-100 py-2" onclick="appendToDisplay('(')">&#40;</button></div>
+                    <div class="col-2"><button class="btn btn-info w-100 py-2" onclick="appendToDisplay(')')">&#41;</button></div>
+                    <div class="col-2"><button class="btn btn-info w-100 py-2" onclick="calculateSquareRoot()">√</button></div>
+                    <div class="col-2"><button class="btn btn-info w-100 py-2" onclick="calculateSquare()">x²</button></div>
+                    <div class="col-2"><button class="btn btn-info w-100 py-2" onclick="appendToDisplay('^')">x^y</button></div>
+                    <div class="col-2"><button class="btn btn-info w-100 py-2" onclick="calculateFactorial()">n!</button></div>
                 </div>
                 
-                <!-- Contenedor para el teclado simbólico -->
-                <div class="collapse mt-3" id="symbolicKeyboard">
-                    <!-- El teclado simbólico se insertará aquí mediante JavaScript -->
+                <!-- Funciones trigonométricas -->
+                <div class="row g-2 mt-2">
+                    <div class="col-2"><button class="btn btn-info w-100 py-2" onclick="calculateSin()">sin</button></div>
+                    <div class="col-2"><button class="btn btn-info w-100 py-2" onclick="calculateCos()">cos</button></div>
+                    <div class="col-2"><button class="btn btn-info w-100 py-2" onclick="calculateTan()">tan</button></div>
+                    <div class="col-2"><button class="btn btn-info w-100 py-2" onclick="calculateLog()">log</button></div>
+                    <div class="col-2"><button class="btn btn-info w-100 py-2" onclick="calculateLn()">ln</button></div>
+                    <div class="col-2"><button class="btn btn-info w-100 py-2" onclick="appendToDisplay('pi')">π</button></div>
+                </div>
+                
+                <!-- Teclado numérico y operaciones básicas -->
+                <div class="row g-2 mt-2">
+                    <div class="col-2"><button class="btn btn-light w-100 py-3" onclick="appendToDisplay('7')">7</button></div>
+                    <div class="col-2"><button class="btn btn-light w-100 py-3" onclick="appendToDisplay('8')">8</button></div>
+                    <div class="col-2"><button class="btn btn-light w-100 py-3" onclick="appendToDisplay('9')">9</button></div>
+                    <div class="col-2"><button class="btn btn-warning w-100 py-3" onclick="appendToDisplay('/')">÷</button></div>
+                    <div class="col-2"><button class="btn btn-warning w-100 py-3" onclick="calculatePercent()">%</button></div>
+                    <div class="col-2"><button class="btn btn-info w-100 py-3" onclick="calculateFactorial()">n!</button></div>
+                </div>
+                <div class="row g-2 mt-2">
+                    <div class="col-2"><button class="btn btn-light w-100 py-3" onclick="appendToDisplay('4')">4</button></div>
+                    <div class="col-2"><button class="btn btn-light w-100 py-3" onclick="appendToDisplay('5')">5</button></div>
+                    <div class="col-2"><button class="btn btn-light w-100 py-3" onclick="appendToDisplay('6')">6</button></div>
+                    <div class="col-2"><button class="btn btn-warning w-100 py-3" onclick="appendToDisplay('*')">×</button></div>
+                    <div class="col-2"><button class="btn btn-warning w-100 py-3" onclick="calculateInverse()">1/x</button></div>
+                    <div class="col-2"><button class="btn btn-info w-100 py-3" onclick="appendToDisplay('e')">e</button></div>
+                </div>
+                <div class="row g-2 mt-2">
+                    <div class="col-2"><button class="btn btn-light w-100 py-3" onclick="appendToDisplay('1')">1</button></div>
+                    <div class="col-2"><button class="btn btn-light w-100 py-3" onclick="appendToDisplay('2')">2</button></div>
+                    <div class="col-2"><button class="btn btn-light w-100 py-3" onclick="appendToDisplay('3')">3</button></div>
+                    <div class="col-2"><button class="btn btn-warning w-100 py-3" onclick="appendToDisplay('-')">-</button></div>
+                    <div class="col-4"><button class="btn btn-success w-100 py-3" onclick="calculate()">=</button></div>
+                </div>
+                <div class="row g-2 mt-2">
+                    <div class="col-2"><button class="btn btn-light w-100 py-3" onclick="toggleSign()">±</button></div>
+                    <div class="col-2"><button class="btn btn-light w-100 py-3" onclick="appendToDisplay('0')">0</button></div>
+                    <div class="col-2"><button class="btn btn-light w-100 py-3" onclick="appendToDisplay('.')">.</button></div>
+                    <div class="col-2"><button class="btn btn-warning w-100 py-3" onclick="appendToDisplay('+')">+</button></div>
+                    <div class="col-4"><button class="btn btn-info w-100 py-3" onclick="appendToDisplay('10^')">10^x</button></div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
+
 @section Scripts {
-    <script src="~/js/symbolic-keyboard.js"></script>
     <script>
+        // Eliminada la variable para almacenar el valor en memoria
+        
         function appendToDisplay(value) {
             document.getElementById('display').value += value;
         }
 
         function clearDisplay() {
             document.getElementById('display').value = '';
+            document.getElementById('operation-history').textContent = '';
         }
 
         function backspace() {
@@ -78,16 +99,137 @@
 
         function calculate() {
             let display = document.getElementById('display');
+            let history = document.getElementById('operation-history');
             try {
+                history.textContent = display.value;
                 display.value = math.evaluate(display.value);
             } catch (error) {
                 display.value = 'Error';
             }
         }
         
-        // Inicializar el teclado simbólico cuando el DOM esté listo
-        document.addEventListener('DOMContentLoaded', function() {
-            SymbolicKeyboard.init('symbolicKeyboard', 'display');
-        });
+        
+        // Funciones científicas
+        function calculateSquareRoot() {
+            let display = document.getElementById('display');
+            try {
+                let value = math.evaluate(display.value);
+                display.value = Math.sqrt(value);
+            } catch (error) {
+                display.value = 'Error';
+            }
+        }
+        
+        function calculateSquare() {
+            let display = document.getElementById('display');
+            try {
+                let value = math.evaluate(display.value);
+                display.value = value * value;
+            } catch (error) {
+                display.value = 'Error';
+            }
+        }
+        
+        function calculateSin() {
+            let display = document.getElementById('display');
+            try {
+                let value = math.evaluate(display.value);
+                display.value = Math.sin(value);
+            } catch (error) {
+                display.value = 'Error';
+            }
+        }
+        
+        function calculateCos() {
+            let display = document.getElementById('display');
+            try {
+                let value = math.evaluate(display.value);
+                display.value = Math.cos(value);
+            } catch (error) {
+                display.value = 'Error';
+            }
+        }
+        
+        function calculateTan() {
+            let display = document.getElementById('display');
+            try {
+                let value = math.evaluate(display.value);
+                display.value = Math.tan(value);
+            } catch (error) {
+                display.value = 'Error';
+            }
+        }
+        
+        function calculateLog() {
+            let display = document.getElementById('display');
+            try {
+                let value = math.evaluate(display.value);
+                display.value = Math.log10(value);
+            } catch (error) {
+                display.value = 'Error';
+            }
+        }
+        
+        function calculateLn() {
+            let display = document.getElementById('display');
+            try {
+                let value = math.evaluate(display.value);
+                display.value = Math.log(value);
+            } catch (error) {
+                display.value = 'Error';
+            }
+        }
+        
+        function calculatePercent() {
+            let display = document.getElementById('display');
+            try {
+                let value = math.evaluate(display.value);
+                display.value = value / 100;
+            } catch (error) {
+                display.value = 'Error';
+            }
+        }
+        
+        function calculateFactorial() {
+            let display = document.getElementById('display');
+            try {
+                let value = math.evaluate(display.value);
+                if (value < 0 || !Number.isInteger(value)) {
+                    display.value = 'Error';
+                    return;
+                }
+                let result = 1;
+                for (let i = 2; i <= value; i++) {
+                    result *= i;
+                }
+                display.value = result;
+            } catch (error) {
+                display.value = 'Error';
+            }
+        }
+        
+        function calculateInverse() {
+            let display = document.getElementById('display');
+            try {
+                let value = math.evaluate(display.value);
+                if (value === 0) {
+                    display.value = 'Error';
+                    return;
+                }
+                display.value = 1 / value;
+            } catch (error) {
+                display.value = 'Error';
+            }
+        }
+        
+        function toggleSign() {
+            let display = document.getElementById('display');
+            try {
+                let value = math.evaluate(display.value);
+                display.value = -value;
+            } catch (error) {
+                display.value = 'Error';
+            }
+        }
     </script>
 }
